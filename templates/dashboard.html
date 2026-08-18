@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard - Music Tracker</title>
+    <style>
+        body {
+            font-family: -apple-system, sans-serif;
+            background: #121212;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .card {
+            background: #1e1e1e;
+            padding: 40px;
+            border-radius: 16px;
+            text-align: center;
+            min-width: 320px;
+        }
+        .bar-container {
+            background: #333;
+            border-radius: 10px;
+            overflow: hidden;
+            height: 30px;
+            margin: 20px 0;
+            display: flex;
+        }
+        .bar-chretien {
+            background: #4A90D9;
+            height: 100%;
+        }
+        .bar-mondain {
+            background: #E07A5F;
+            height: 100%;
+        }
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+        a {
+            color: #1DB954;
+            text-decoration: none;
+            display: block;
+            margin-top: 20px;
+        }
+        .btn-sync {
+            background: #1DB954;
+            padding: 10px 20px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>Salut {{ display_name }} 👋</h2>
+        <p>Sur tes {{ total }} derniers titres écoutés :</p>
+
+        <div class="bar-container">
+            <div class="bar-chretien" style="width: {{ pct_chretien }}%;"></div>
+            <div class="bar-mondain" style="width: {{ pct_mondain }}%;"></div>
+        </div>
+
+        <div class="stats">
+            <span>🔵 Chrétien: {{ pct_chretien }}% ({{ counts['chretien'] }})</span>
+            <span>🟠 Mondain: {{ pct_mondain }}% ({{ counts['mondain'] }})</span>
+        </div>
+
+        <a class="btn-sync" href="/sync">🔄 Rafraîchir mes données</a>
+        <a href="/logout">Se déconnecter</a>
+    </div>
+</body>
+</html>
