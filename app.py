@@ -239,6 +239,15 @@ def logout():
     session.clear()
     return redirect(url_for("index"))
 
+@app.route("/privacy")
+def privacy():
+    from datetime import date
+    return render_template(
+        "privacy.html",
+        update_date=date.today().strftime("%d/%m/%Y"),
+        contact_email="elouen.nicolicc@gmail.com",
+    )
+
 
 if __name__ == "__main__":
     init_db()
